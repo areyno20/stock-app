@@ -1,0 +1,1 @@
+var stocks = new Stocks('GPC9UGIE9X6VAHJ0');
