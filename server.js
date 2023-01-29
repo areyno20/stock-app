@@ -24,6 +24,7 @@ const sess = {
 };
 
 app.use(session(sess));
+app.use(express.static(path.join(__dirname, 'views/html.templates')));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
