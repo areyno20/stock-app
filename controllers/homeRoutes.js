@@ -2,31 +2,35 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
+const cors = require('cors');
+router.use(cors());
+router.options('*', cors());
 
-    const users = userData.map((project) => project.get({ plain: true }));
+require('dotenv').config();
 
-    res.render('homepage', {
-      users,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+//homepage
+router.get('/', (req, res) => {
+  res.render('home');
 });
 
+//login page
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
-
   res.render('login');
 });
+
+//sigup page
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+//stock page
+router.get('/dashboard', (req, res) => {
+  res.render('stockdashboard');
+});
+
+
+
+
+  
 
 module.exports = router;

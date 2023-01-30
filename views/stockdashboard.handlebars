@@ -1,0 +1,65 @@
+<div>dashboard</div>
+</html>
+<script>
+window.onload = function () {
+
+// replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
+var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=GPC9UGIE9X6VAHJ0';
+fetch(API_URL)
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
+    console.log(data);
+    var stockData = data['Time Series (5min)'];
+    var dataPoints = [];
+    for (var key in stockData) {
+        if (stockData.hasOwnProperty(key)) {
+            dataPoints.push({
+                x: new Date(key),
+                y: parseFloat(stockData[key]['4. close'])
+            });
+        }
+    }
+    console.log(dataPoints);
+    var options = {
+        animationEnabled: true,
+        title:{
+            text: "Stock Price of IBM - September"
+        },
+        axisX:{
+            valueFormatString: "DD MMM",
+            crosshair: {
+                enabled: true,
+                snapToDataPoint: true
+            }
+        },
+        axisY: {
+            title: "Closing Price (in USD)",
+            valueFormatString: "$##0.00",
+            crosshair: {
+                enabled: true,
+                snapToDataPoint: true,
+                labelFormatter: function(e) {
+                    return "$" + CanvasJS.formatNumber(e.value, "##0.00");
+                }
+            }
+        },
+        data: [{
+            type: "area",
+            xValueFormatString: "DD MMM",
+            yValueFormatString: "$##0.00",
+            dataPoints: dataPoints
+        }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+});
+}
+
+</script>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>
