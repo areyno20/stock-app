@@ -8,6 +8,7 @@ router.options('*', cors());
 
 require('dotenv').config();
 
+
 //homepage
 router.get('/', (req, res) => {
   res.render('home');
@@ -24,8 +25,8 @@ router.get('/signup', (req, res) => {
 });
 
 //stock page
-router.get('/dashboard', (req, res) => {
-  res.render('stockdashboard');
+router.get('/dailystock', (req, res) => {
+  res.render('dailystock');
 });
 
 
