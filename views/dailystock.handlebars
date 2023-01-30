@@ -28,43 +28,51 @@ fetch(API_URL)
 .then(function(data) {
     console.log(data);
     var stockData = data['Time Series ('+interval+')'];
-    var dataPoints = [];    
+    var dataPoints = [];
     for (var key in stockData) {
         if (stockData.hasOwnProperty(key)) {
             dataPoints.push({
                 x: new Date(key),
-                y: parseFloat(stockData[key]['4. close'])
+                y: [
+                    Number(stockData[key]['1. open']),
+                    Number(stockData[key]['2. high']),
+                    Number(stockData[key]['3. low']),
+                    Number(stockData[key]['4. close'])
+                ]
             });
         }
     }
     console.log(dataPoints);
     var options = {
         animationEnabled: true,
-        title:{
+	    theme: "light2", // "light1", "light2", "dark1", "dark2"
+	    exportEnabled: true,
+	    title:{
             text: "Stock Price of " +symbol+ " - Daily Graph ("+currentDate+")"
         },
-        axisX:{
-            valueFormatString: "DD MMM",
-            crosshair: {
-                enabled: true,
-                snapToDataPoint: true
-            }
+        subtitles: [{
+            text: "Weekly Averages"
+        }],
+        axisX: {
+            valueFormatString: "DD MMM"
         },
         axisY: {
-            title: "Closing Price (in USD)",
-            valueFormatString: "$##0.00",
-            crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-                labelFormatter: function(e) {
-                    return "$" + CanvasJS.formatNumber(e.value, "##0.00");
-                }
-            }
+            prefix: "₩",
+            title: "Price",
+            valueFormatString: "#0.0,,.M"
+        }, 
+        legend: {
+            dockInsidePlotArea: true
         },
         data: [{
-            type: "area",
-            xValueFormatString: "DD MMM",
-            yValueFormatString: "$##0.00",
+		    type: "candlestick",
+		    showInLegend: true,
+		    legendText: "Currency in USD",
+		    xValueType: "dateTime",
+		    yValueFormatString: "₩#,#00.##",
+		    xValueFormatString: "DD MMM",
+		    risingColor: "#CBE8C8",
+		    fallingColor: "#FFCCCC",
             dataPoints: dataPoints
         }]
     };
