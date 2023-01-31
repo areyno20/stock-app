@@ -1,38 +1,49 @@
 const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
-const apiKey = require('../public/js/APIKEY');
 
-const cors = require('cors');
-router.use(cors());
-router.options('*', cors());
+// Prevent non logged in users from viewing the homepage
+router.get('/', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      order: [['name', 'ASC']],
+    });
 
-require('dotenv').config();
+    const users = userData.map((project) => project.get({ plain: true }));
 
-
-//homepage
-router.get('/', (req, res) => {
-  res.render('home');
+    res.render('homepage', {
+      users,
+      // Pass the logged in flag to the template
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-//login page
 router.get('/login', (req, res) => {
+  // If a session exists, redirect the request to the homepage
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
   res.render('login');
 });
 
-//sigup page
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-//stock page
-router.get('/stockdashboard', (req, res) => {
-  res.render('stockdashboard');
-});
-
-
-
-
-  
-
 module.exports = router;
+
+
+
+router.get('/signup', (req, res) => {
+    // If the user is already logged in, redirect to the homepage
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    // Otherwise, render the 'login' template
+    res.render('signup');
+  });
+  
+  module.exports = router;
