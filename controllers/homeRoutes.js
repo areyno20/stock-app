@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
+const apiKey = require('../public/js/APIKEY');
 
 const cors = require('cors');
 router.use(cors());
@@ -25,8 +26,8 @@ router.get('/signup', (req, res) => {
 });
 
 //stock page
-router.get('/dailystock', (req, res) => {
-  res.render('dailystock');
+router.get('/stockdashboard', (req, res) => {
+  res.render('stockdashboard');
 });
 
 
