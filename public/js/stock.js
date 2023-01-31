@@ -1,4 +1,3 @@
-
 function dailyStocks () {
     const date = new Date();
     

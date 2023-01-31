@@ -1,11 +1,15 @@
 <body>
-<input type="text" name="symbol" id="symbol">
-<select type="choice" name="interval" id="interval" onchange="chartType()">
-    <option value="1">Daily Chart</option>
-    <option value="2">Weekly Chart</option>
-    <option value="3">Monthly Chart</option>
-</select>
+    <input type="text" name="symbol" id="symbol">
+    <select type="choice" name="interval" id="interval" onchange="chartType()">
+        <option value="1">Daily Chart</option>
+        <option value="2">Weekly Chart</option>
+        <option value="3">Monthly Chart</option>
+    </select>
+    <button onlclick= "chartType()" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Show Graph</button>
+
+
 <script>
+    var symbol = document.getElementById("symbol").value;
     var daily = document.getElementById("daily");
     var weekly = document.getElementById("weekly");
     var monthly = document.getElementById("monthly");
@@ -27,10 +31,11 @@
         }
     }
 </script>
-<button onclick="chartType()" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Show Graph</button>
+
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 </body>
