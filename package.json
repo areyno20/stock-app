@@ -1,5 +1,5 @@
 {
-  "name": "user-list",
+  "name": "stock-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/areyno20/stock-app.git"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +23,11 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
+    "request": "^2.88.2",
     "sequelize": "^6.3.5"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/areyno20/stock-app/issues"
+  },
+  "homepage": "https://github.com/areyno20/stock-app#readme"
 }
