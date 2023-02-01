@@ -45,6 +45,11 @@ router.get('/signup', (req, res) => {
     // Otherwise, render the 'login' template
     res.render('signup');
   });
+
+router.get('/stockdashboard', (req, res) => {
+  res.render('stockdashboard');
+});
+
   
 // router.get('/stockdashboard/symbol', (req, res) => {
 //   var symbol = req.query.symbol;

@@ -31,11 +31,10 @@
     "jsdom": "^21.1.0",
     "mysql2": "^2.2.5",
     "request": "^2.88.2",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.28.0"
   },
   "bugs": {
     "url": "https://github.com/areyno20/stock-app/issues"
   },
   "homepage": "https://github.com/areyno20/stock-app#readme"
-
-   
+}
