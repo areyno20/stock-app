@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registry</title>
-  <link rel="stylesheet" href="/css/jass.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/stock.js"></script>
+    <title>Stocktistics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+     crossorigin="anonymous">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/44/44499.png" sizes="16x16 32x32" type="image/png">
 </head>
+    <body class="bg-gray-600">
+        <!--NavBar-->
+        <nav class="relative container mx-auto p-6">
+            <!--Flex Container-->
+            <div class="flex items-center justify-between">
+                <!--Logo-->
+                <div class="pt-2">
+                    <img class="block h-8 w-auto lg:hidden"src="https://cdn-icons-png.flaticon.com/512/44/44499.png" alt="Stocktistics">
+                </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand">Stocklistic
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" >Stocklistic </a>
-      <a class="nav-item nav-link" href="/register">Register</a>
-      <a class="nav-item nav-link" href="/login">Login</a>
-    </div>
-    <form class="form-inline my-2 my-lg-0" action="/" method ="POST" >
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="stocklistic">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+                <div class="flex space-x-6 md:flex">
+                    <a href="../stockdashboard" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stocks</a>
+                    <a href="#" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Currency</a>
+                    <a href="#" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                    <a href="#" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
+                </div>
+                <!--Button-->
+                <a
+                href="#"
+                class="block p-3 px-6 pt-2 text-white bg-sky-500
+                rounded-full baseline hover:bg-blue-700">Get Started</a>
 
-<main>
+                </div>
+            </nav>
+<div class="body">   
+    {{{body}}}
+</div>
+
+
+<footer class="p-4 bg-gray-600 text-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="Stocktistics" class="hover:underline">Stocktistics™</a>. All Rights Reserved.
+    </span>
     
-   <h2>All about stocks!</h2>
-<br>
-{
-  </main>
+</footer>
 
-<body>
-
-            </body>
-            </html>
+</body>
+</html>
