@@ -1,10 +1,6 @@
 const router = require('express').Router();
-const jsdom = require('jsdom');
-$ = require('jquery')(new jsdom.JSDOM().window);
-const fetch = require('node-fetch');
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
-
 
 // Prevent non logged in users from viewing the homepage
 router.get('/', withAuth, async (req, res) => {
@@ -35,6 +31,10 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+module.exports = router;
+
+
 
 router.get('/signup', (req, res) => {
     // If the user is already logged in, redirect to the homepage

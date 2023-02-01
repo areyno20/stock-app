@@ -36,7 +36,7 @@ function dailyStocks () {
             theme: "light2", // "light1", "light2", "dark1", "dark2"
             exportEnabled: true,
             title:{
-                text: "Stock Price of " +symbol+ " - Daily Graph ("+currentDate+")"
+                text: "Stock Price of " +symbol+ " - Daily Graph (As of "+currentDate+")"
             },
             axisX: {
                 valueFormatString: "DD MMM"
@@ -102,10 +102,10 @@ function weeklyStocks () {
             theme: "light2", // "light1", "light2", "dark1", "dark2"
             exportEnabled: true,
             title:{
-                text: "Stock Price of " +symbol+ " - Weekly Graph ("+currentDate+")"
+                text: "Stock Price of " +symbol+ " - Weekly Graph (As of "+currentDate+")"
             },
             axisX: {
-                valueFormatString: "MMM",
+                valueFormatString: "DD MMM YYYY",
                 minimum: date.setMonth(date.getMonth() - 6)
             },
             axisY: {
@@ -121,7 +121,7 @@ function weeklyStocks () {
                 legendText: "Currency in USD",
                 xValueType: "dateTime",
                 yValueFormatString: "$###0.00",
-                xValueFormatString: "MMM YYYY",
+                xValueFormatString: "DD MMM YYYY",
                 risingColor: "#CBE8C8",
                 fallingColor: "#FFCCCC",
                 dataPoints: dataPoints
@@ -169,7 +169,7 @@ function monthlyStocks () {
             theme: "light2", // "light1", "light2", "dark1", "dark2"
             exportEnabled: true,
             title:{
-                text: "Stock Price of " +symbol+ " - Monthly Graph ("+currentDate+")"
+                text: "Stock Price of " +symbol+ " - Monthly Graph (As of "+currentDate+")"
             },
             axisX: {
                 valueFormatString: "DD MMM YYYY",
