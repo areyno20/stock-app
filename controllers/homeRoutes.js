@@ -50,6 +50,11 @@ router.get('/stockdashboard', (req, res) => {
   res.render('stockdashboard');
 });
 
+router.get('/currency', (req, res) => {
+  res.render('currency');
+});
+
+
   
 // router.get('/stockdashboard/symbol', (req, res) => {
 //   var symbol = req.query.symbol;
