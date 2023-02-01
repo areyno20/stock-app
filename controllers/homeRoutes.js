@@ -2,34 +2,50 @@ const router = require('express').Router();
 const jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
 const fetch = require('node-fetch');
-
-const cors = require('cors');
-router.use(cors());
-router.options('*', cors());
-
-require('dotenv').config();
+const { User } = require('../models');
+const withAuth = require('../utils/auth');
 
 
-//homepage
-router.get('/', (req, res) => {
-  res.render('home');
+// Prevent non logged in users from viewing the homepage
+router.get('/', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      order: [['name', 'ASC']],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
+    res.render('homepage', {
+      users,
+      // Pass the logged in flag to the template
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-//login page
 router.get('/login', (req, res) => {
+  // If a session exists, redirect the request to the homepage
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
   res.render('login');
 });
 
-//sigup page
 router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-//stock page
-router.get('/stockdashboard', (req, res) => {
-  res.render('stockdashboard');
-});
-
+    // If the user is already logged in, redirect to the homepage
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    // Otherwise, render the 'login' template
+    res.render('signup');
+  });
+  
 // router.get('/stockdashboard/symbol', (req, res) => {
 //   var symbol = req.query.symbol;
 //   var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+symbol+'&interval=5min&apikey='+process.env.API_KEY;
@@ -91,9 +107,5 @@ router.get('/stockdashboard', (req, res) => {
 //       $("#chartContainer").CanvasJSChart(options);
 //   });     
 // });
-
-
-
-  
 
 module.exports = router;
