@@ -5,16 +5,30 @@
     <h1>Currency Converter</h1>
     <div class="box">
         <div class="left-box">
-            <select name="currency" class="currency"></select>
-            <input type="number" name="" id="input">
+            <select name="currencyone" class="currencyone" type="choice">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+            </select>
         </div>
         <div class="right-box">
-            <select name="currency" class="currency"></select>
-            <input type="number" name="" id="disabled">
+            <select name="currencytwo" class="currencytwo" type="choice">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+            </select>
         </div>
     </div>
-<button class="btn" id="btn">Convert</button>
+<button onclick="currencyConverter()" class="btn" id="btn">Convert</button>
+<div id="chartContainer" class="" style="height: 370px; width: 100%;"></div>
 </div>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="js/currency.js"></script>
 
 
