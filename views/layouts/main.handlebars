@@ -22,13 +22,20 @@
                     <a href="../" class="text-white hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-large">Stocktistics</a>
                 </div>
                 <div class="flex space-x-6 md:flex">
-                    <a href="../stockdashboard" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stocks</a>
-                    <a href="../currency" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Currency</a>
-                    <a href="../login" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-                    <a href="../signup" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
-                    {{#if logged_in}}
-                    <btn id="logout" class=" btn text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Log Out</btn>
-                    {{/if}}                
+                {{#if logged_in}}
+                <a href="/stockdashboard"
+                        class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stocks</a>
+                    <a href="/currency"
+                        class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Currency</a>
+                <button id="logout" class="btn-no-style text-white">Logout</button>
+                <script src="js/logout.js"></script>
+                {{else}}
+                <!-- Otherwise, show a link to login -->
+                <a href="/login" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                <a href="/signup"
+                        class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign
+                        Up</a>
+                {{/if}}          
                 </div>
             </nav>
 

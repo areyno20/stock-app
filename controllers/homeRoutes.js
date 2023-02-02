@@ -38,7 +38,7 @@ module.exports = router;
 
 router.get('/signup', (req, res) => {
     // If the user is already logged in, redirect to the homepage
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
       res.redirect('/');
       return;
     }
