@@ -1,3 +1,5 @@
+var apikey = config.API_KEY;
+
 function dailyStocks () {
     const date = new Date();
     
@@ -8,7 +10,7 @@ function dailyStocks () {
     
     var symbol = document.getElementById("symbol").value;
     // var interval = document.getElementById("interval").value;
-    var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+symbol+'&interval=5min&apikey=GPC9UGIE9X6VAHJ0';
+    var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+symbol+'&interval=5min&apikey='+apikey;
     fetch(API_URL)
     .then(function(response) {
         return response.json();
@@ -74,7 +76,7 @@ function weeklyStocks () {
     
     var symbol = document.getElementById("symbol").value;
     // var interval = document.getElementById("interval").value;
-    var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol='+symbol+'&apikey=GPC9UGIE9X6VAHJ0';
+    var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol='+symbol+'&apikey='+apikey;
     fetch(API_URL)
     .then(function(response) {
         return response.json();
@@ -141,7 +143,7 @@ function monthlyStocks () {
     
     var symbol = document.getElementById("symbol").value;
     // var interval = document.getElementById("interval").value;
-    var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+symbol+'&apikey=GPC9UGIE9X6VAHJ0';
+    var API_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol='+symbol+'&apikey='+apikey;
     fetch(API_URL)
     .then(function(response) {
         return response.json();
@@ -200,7 +202,7 @@ function monthlyStocks () {
 
 function overviewStocks (){
     var symbol = $("#symbol").val();
-    var API_URL = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol='+symbol+'&apikey=GPC9UGIE9X6VAHJ0';
+    var API_URL = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol='+symbol+'&apikey='+apikey;
     fetch(API_URL)
     .then(function(response) {
         return response.json();
