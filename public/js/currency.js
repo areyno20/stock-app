@@ -4,68 +4,27 @@ function currencyConverter() {
 
 var currencyOne = document.getElementById("currencyone").value;
 var currencyTwo = document.getElementById("currencytwo").value;
-var USD = document.getElementById("USD").value;
 
-
-var URL = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency='+currencyOne+'&to_currency='+currencyTwo+'&apikey=GPC9UGIE9X6VAHJ0';
+var URL = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency='+currencyOne+'&to_currency='+currencyTwo+'&apikey='+apikey;
 
 fetch(URL)
-.then(function(response) {
-    return response.json();
-})
-.then(function(data) {
-    console.log(data);
-    var stockData = data['Realtime Currency Exchange Rate'];
-    var dataPoints = [];
-    for (var key in stockData) {
-        if (stockData.hasOwnProperty(key)) {
-            dataPoints.push({
-                x: new Date(key),
-                y: [
-                    Number(stockData[key]['1. open']),
-                    Number(stockData[key]['2. high']),
-                    Number(stockData[key]['3. low']),
-                    Number(stockData[key]['4. close'])
-                ]
-            });
-        }
-    }
-    console.log(dataPoints);
-    var options = {
-        animationEnabled: true,
-        theme: "light2",
-        title: {
-            text: "Currency Converter"
-        },
-        axisX: {
-            valueFormatString: "HH DD MMM"
-        },
-        axisY: {
-            prefix: "$",
-            title: "Price",
-        }, 
-        legend: {
-            dockInsidePlotArea: true
-        },
-        data: [{
-            type: "candlestick",
-            showInLegend: true,
-            legendText: "Currency in USD",
-            xValueType: "dateTime",
-            yValueFormatString: "$###0.00",
-            xValueFormatString: "HH DD MMM YYYY",
-            risingColor: "#CBE8C8",
-            fallingColor: "#FFCCCC",
-            dataPoints: dataPoints
-        }]
-    };
-    $("#chartContainer").CanvasJSChart(options);
-})
-.catch(function(err) {
-    console.log(err);
-});
-}
+.then(res => res.json())
+.then(res => {
+    var rate = res.rates[currencyTwo];
+    document.getElementById("rate").innerText = "1 " + currencyOne + " = " + rate + " " + currencyTwo;
+    document.getElementById("currencyone_amount").addEventListener("input", currencyoneAmount);
+    document.getElementById("currencytwo_amount").addEventListener("input", currencytwoAmount);
 
+    function currencyoneAmount(e){
+        var currencyoneAmount = e.target.value;
+        document.getElementById("currencytwo_amount").value = currencyoneAmount * rate;
+    }
+    function currencytwoAmount(e){
+        var currencytwoAmount = e.target.value;
+        document.getElementById("currencyone_amount").value = currencytwoAmount / rate;
+    }
+})
+}
 
 //async function dataLoad(currencyOne, currencyTwo) {
   //  const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${currencyOne}&to_currency=${currencyTwo}&apikey=GPC9UGIE9X6VAHJ0`;
