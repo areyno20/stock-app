@@ -1,3 +1,5 @@
+var apikey = config.API_KEY;
+
 function currencyConverter() {
 
 var currencyOne = document.getElementById("currencyone").value;
