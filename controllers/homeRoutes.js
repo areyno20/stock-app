@@ -47,11 +47,21 @@ router.get('/signup', (req, res) => {
   });
 
 router.get('/stockdashboard', (req, res) => {
-  res.render('stockdashboard');
+  if (req.session.logged_in) {
+    res.render('stockdashboard', {
+      logged_in: req.session.logged_in
+    });
+    return;
+  }
 });
 
 router.get('/currency', (req, res) => {
-  res.render('currency');
+  if (req.session.logged_in) {
+    res.render('currency', {
+      logged_in: req.session.logged_in
+    });
+    return;
+  }
 });
 
 
