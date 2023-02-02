@@ -18,12 +18,15 @@
         let option = document.getElementById("interval").value;
 
         if(option === "1"){
+            overviewStocks();
             dailyStocks();
         }
         else if(option === "2"){
+            overviewStocks();
             weeklyStocks();
         }
         else if(option === "3"){
+            overviewStocks();
             monthlyStocks();
         }
         else{
@@ -32,7 +35,8 @@
     }
 </script>
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div id="overview" class="text-white text-left"></div>
+<div id="chartContainer" class="" style="height: 370px; width: 100%;"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  

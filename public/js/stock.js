@@ -197,3 +197,64 @@ function monthlyStocks () {
         $("#chartContainer").CanvasJSChart(options);
     });
 }
+
+function overviewStocks (){
+    var symbol = $("#symbol").val();
+    var API_URL = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol='+symbol+'&apikey=GPC9UGIE9X6VAHJ0';
+    fetch(API_URL)
+    .then(function(response) {
+        return response.json();
+    }
+    )
+    .then(function(data) {
+        console.log(data);
+        var symbol = data['Symbol'];
+        var name = data['Name'];
+        var description = data['Description'];
+        var exchange = data['Exchange'];
+        var currency = data['Currency'];
+        var country = data['Country'];
+        var sector = data['Sector'];
+        var industry = data['Industry'];
+        var address = data['Address'];
+        var fullTimeEmployees = data['FullTimeEmployees'];
+        var fiscalYearEnd = data['FiscalYearEnd'];
+        var latestQuarter = data['LatestQuarter'];
+        var marketCapitalization = data['MarketCapitalization'];
+        var ebitda = data['EBITDA'];
+        var peratio = data['PERatio'];
+        var pegRatio = data['PEGRatio'];
+        var bookValue = data['BookValue'];
+        var dividendPerShare = data['DividendPerShare'];
+        var dividendYield = data['DividendYield'];
+        var eps = data['EPS'];
+        var revenuePerShareTTM = data['RevenuePerShareTTM'];
+        var profitMargin = data['ProfitMargin'];
+            
+        var overview = document.getElementById("overview");
+
+        overview.innerHTML = 
+        "<p>Symbol: " + symbol + "</p>" +
+        "<p>Name: " + name + "</p>" +
+        "<p>Description: " + description + "</p>" +
+        "<p>Exchange: " + exchange + "</p>" +
+        "<p>Currency: " + currency + "</p>" +
+        "<p>Country: " + country + "</p>" +
+        "<p>Sector: " + sector + "</p>" +
+        "<p>Industry: " + industry + "</p>" +
+        "<p>Address: " + address + "</p>" +
+        "<p>Fiscal Year End: " + fiscalYearEnd + "</p>" +
+        "<p>Latest Quarter: " + latestQuarter + "</p>" +
+        "<p>Market Capitalization: " + marketCapitalization + "</p>" +
+        "<p>EBITDA: " + ebitda + "</p>" +
+        "<p>PERatio: " + peratio + "</p>" +
+        "<p>PEGRatio: " + pegRatio + "</p>" +
+        "<p>Book Value: " + bookValue + "</p>" +
+        "<p>Dividend Per Share: " + dividendPerShare + "</p>" +
+        "<p>Dividend Yield: " + dividendYield + "</p>" +
+        "<p>EPS: " + eps + "</p>" +
+        "<p>Revenue Per Share TTM: " + revenuePerShareTTM + "</p>" +
+        "<p>Profit Margin: " + profitMargin + "</p>";
+        });
+
+    }
