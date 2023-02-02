@@ -39,7 +39,7 @@ function dailyStocks () {
                 text: "Stock Price of " +symbol+ " - Daily Graph (As of "+currentDate+")"
             },
             axisX: {
-                valueFormatString: "HH DD MMM"
+                valueFormatString: "HH:mm DD MMM"
             },
             axisY: {
                 prefix: "$",
@@ -54,7 +54,7 @@ function dailyStocks () {
                 legendText: "Currency in USD",
                 xValueType: "dateTime",
                 yValueFormatString: "$###0.00",
-                xValueFormatString: "HH DD MMM YYYY",
+                xValueFormatString: "HH:mm DD MMM YYYY",
                 risingColor: "#CBE8C8",
                 fallingColor: "#FFCCCC",
                 dataPoints: dataPoints
