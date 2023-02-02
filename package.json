@@ -1,5 +1,5 @@
 {
-  "name": "user-list",
+  "name": "stock-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,17 +8,28 @@
     "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/areyno20/stock-app.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "cjs": "^0.0.11",
     "connect-session-sequelize": "^7.0.4",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
-  }
+    "request": "^2.88.2",
+    "sequelize": "^6.28.0"
+  },
+  "bugs": {
+    "url": "https://github.com/areyno20/stock-app/issues"
+  },
+  "homepage": "https://github.com/areyno20/stock-app#readme"
 }
