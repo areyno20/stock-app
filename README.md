@@ -8,6 +8,16 @@ As a user,
 I WANT to be able to search for stocks,
 SO THAT I can get the trading values and receive chart data.
 
+## Technologies Used
+-Alpha Vantage API: Stock Data					-
+-CanvasJS: Graphs and Charts				
+-TailWind CSS, Handlebars					
+-Node JS, Express							
+-MySQL				
+-bcrypt
+-Express
+-Handlebars
+
 ## Installation
 Please follow the instructions below to install the application.
 
