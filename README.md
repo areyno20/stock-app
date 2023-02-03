@@ -12,10 +12,15 @@ SO THAT I can get the trading values and receive chart data.
 Please follow the instructions below to install the application.
 
 git clone https://github.com/areyno20/stock-app
+
 npm install
+
 mysql connect
+
 source db/schema.sql
+
 npm run seed
+
 npm start
 
 ## Live Website
