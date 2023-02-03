@@ -15,9 +15,7 @@ git clone https://github.com/areyno20/stock-app
 
 npm install
 
-mysql connect
-
-source db/schema.sql
+mysql - source db/schema.sql
 
 npm run seed
 
